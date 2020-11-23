@@ -18,7 +18,7 @@ class HeaderLocatorTest extends TestCase
      */
     private $headerLocator;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->headerLocator = new Header\HeaderLocator();
     }

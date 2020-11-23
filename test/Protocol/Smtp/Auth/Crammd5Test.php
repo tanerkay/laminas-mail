@@ -23,7 +23,7 @@ class Crammd5Test extends TestCase
      */
     protected $auth;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->auth = new Crammd5();
     }

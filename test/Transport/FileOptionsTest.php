@@ -21,7 +21,7 @@ class FileOptionsTest extends TestCase
     /** @var FileOptions  */
     private $options;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->options = new FileOptions();
     }
@@ -34,9 +34,9 @@ class FileOptionsTest extends TestCase
     public function testDefaultCallbackIsSetByDefault()
     {
         $callback = $this->options->getCallback();
-        $this->assertInternalType('callable', $callback);
+        $this->assertIsCallable($callback);
         $test     = $callback('');
-        $this->assertRegExp('#^LaminasMail_\d+_\d+\.eml$#', $test);
+        $this->assertMatchesRegularExpression('#^LaminasMail_\d+_\d+\.eml$#', $test);
     }
 
     public function testPathIsMutable()

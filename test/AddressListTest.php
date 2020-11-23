@@ -23,7 +23,7 @@ class AddressListTest extends TestCase
     /** @var AddressList */
     private $list;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->list = new AddressList();
     }

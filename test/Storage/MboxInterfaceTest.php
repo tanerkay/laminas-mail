@@ -21,7 +21,7 @@ class MboxInterfaceTest extends TestCase
 {
     protected $mboxFile;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->mboxFile = __DIR__ . '/../_files/test.mbox/INBOX';
     }

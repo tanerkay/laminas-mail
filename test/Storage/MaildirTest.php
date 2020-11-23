@@ -21,7 +21,7 @@ class MaildirTest extends TestCase
     protected $maildir;
     protected $tmpdir;
 
-    public function setUp()
+    public function setUp(): void
     {
         if (\strtoupper(\substr(PHP_OS, 0, 3)) == 'WIN') {
             $this->markTestSkipped('This test does not work on Windows');
@@ -82,7 +82,7 @@ class MaildirTest extends TestCase
         }
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         foreach (['cur', 'new'] as $dir) {
             if (! is_dir($this->tmpdir . $dir)) {

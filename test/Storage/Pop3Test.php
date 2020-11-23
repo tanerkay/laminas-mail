@@ -22,7 +22,7 @@ class Pop3Test extends TestCase
 {
     protected $params;
 
-    public function setUp()
+    public function setUp(): void
     {
         if (! getenv('TESTS_LAMINAS_MAIL_POP3_ENABLED')) {
             $this->markTestSkipped('Laminas_Mail POP3 tests are not enabled');

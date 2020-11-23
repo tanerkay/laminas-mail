@@ -28,7 +28,7 @@ class MessageTest extends TestCase
     protected $file;
     protected $file2;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->file = __DIR__ . '/../_files/mail.txt';
         $this->file2 = __DIR__ . '/../_files/mail_multi_to.txt';

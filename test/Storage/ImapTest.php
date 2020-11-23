@@ -21,7 +21,7 @@ class ImapTest extends TestCase
 {
     protected $params;
 
-    public function setUp()
+    public function setUp(): void
     {
         if (! getenv('TESTS_LAMINAS_MAIL_IMAP_ENABLED')) {
             $this->markTestSkipped('Laminas_Mail IMAP tests are not enabled');
@@ -686,7 +686,7 @@ class ImapTest extends TestCase
         $result = $protocol->store(['\Flagged'], 1, null, '', false);
         $this->assertContains('\Flagged', $result[1]);
         $result = $protocol->store(['\Flagged'], 1, null, '-', false);
-        $this->assertNotContains('\Flagged', $result[1]);
+        $this->assertStringNotContainsString('\Flagged', $result[1]);
         $result = $protocol->store(['\Flagged'], 1, null, '+', false);
         $this->assertContains('\Flagged', $result[1]);
     }

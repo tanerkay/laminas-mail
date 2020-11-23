@@ -24,7 +24,7 @@ class MboxFolderTest extends TestCase
     protected $tmpdir;
     protected $subdirs = ['.', 'subfolder'];
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->originalDir = __DIR__ . '/../_files/test.mbox/';
 
@@ -69,7 +69,7 @@ class MboxFolderTest extends TestCase
         }
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         foreach (array_reverse($this->subdirs) as $dir) {
             $dh = opendir($this->tmpdir . $dir);

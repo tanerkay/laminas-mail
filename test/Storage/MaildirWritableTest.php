@@ -22,7 +22,7 @@ class MaildirWritableTest extends TestCase
     protected $tmpdir;
     protected $subdirs = ['.', '.subfolder', '.subfolder.test'];
 
-    public function setUp()
+    public function setUp(): void
     {
         if (\strtoupper(\substr(PHP_OS, 0, 3)) == 'WIN') {
             $this->markTestSkipped('This test does not work on Windows');
@@ -94,7 +94,7 @@ class MaildirWritableTest extends TestCase
         }
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         foreach (array_reverse($this->subdirs) as $dir) {
             if (! file_exists($this->tmpdir . $dir)) {

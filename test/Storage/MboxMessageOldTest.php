@@ -16,7 +16,7 @@ class MboxMessageOldTest extends TestCase
     protected $mboxFile;
     protected $tmpdir;
 
-    public function setUp()
+    public function setUp(): void
     {
         if ($this->tmpdir == null) {
             if (getenv('TESTS_LAMINAS_MAIL_TEMPDIR') != null) {
@@ -45,7 +45,7 @@ class MboxMessageOldTest extends TestCase
         copy($this->mboxOriginalFile, $this->mboxFile);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unlink($this->mboxFile);
     }

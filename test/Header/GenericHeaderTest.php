@@ -92,8 +92,8 @@ class GenericHeaderTest extends TestCase
         $header->setFieldValue($fieldValue);
 
         $serialized = $header->toString();
-        $this->assertNotContains("\n", $serialized);
-        $this->assertNotContains("\r", $serialized);
+        $this->assertStringNotContainsString("\n", $serialized);
+        $this->assertStringNotContainsString("\r", $serialized);
     }
 
     /**
@@ -196,10 +196,10 @@ class GenericHeaderTest extends TestCase
         $subject = new GenericHeader();
         $subject->setFieldValue('Accents òàùèéì');
 
-        self::assertSame('UTF-8', $subject->getEncoding());
+        $this->assertSame('UTF-8', $subject->getEncoding());
 
         $subject->setEncoding('ASCII');
-        self::assertSame('UTF-8', $subject->getEncoding());
+        $this->assertSame('UTF-8', $subject->getEncoding());
     }
 
     public function testChangeEncodingBackToAscii()
@@ -207,39 +207,39 @@ class GenericHeaderTest extends TestCase
         $subject = new GenericHeader('X-Test');
         $subject->setFieldValue('test');
 
-        self::assertSame('ASCII', $subject->getEncoding());
+        $this->assertSame('ASCII', $subject->getEncoding());
 
         $subject->setEncoding('UTF-8');
-        self::assertSame('UTF-8', $subject->getEncoding());
+        $this->assertSame('UTF-8', $subject->getEncoding());
 
         $subject->setEncoding('ASCII');
-        self::assertSame('ASCII', $subject->getEncoding());
+        $this->assertSame('ASCII', $subject->getEncoding());
     }
 
     public function testSetNullEncoding()
     {
         $subject = GenericHeader::fromString('X-Test: test');
-        self::assertSame('ASCII', $subject->getEncoding());
+        $this->assertSame('ASCII', $subject->getEncoding());
 
         $subject->setEncoding(null);
-        self::assertSame('ASCII', $subject->getEncoding());
+        $this->assertSame('ASCII', $subject->getEncoding());
     }
 
     public function testSettingFieldValueCanChangeEncoding()
     {
         $subject = GenericHeader::fromString('X-Test: test');
-        self::assertSame('ASCII', $subject->getEncoding());
+        $this->assertSame('ASCII', $subject->getEncoding());
 
         $subject->setFieldValue('Accents òàùèéì');
-        self::assertSame('UTF-8', $subject->getEncoding());
+        $this->assertSame('UTF-8', $subject->getEncoding());
     }
 
     public function testSettingTheSameEncoding()
     {
         $subject = GenericHeader::fromString('X-Test: test');
-        self::assertSame('ASCII', $subject->getEncoding());
+        $this->assertSame('ASCII', $subject->getEncoding());
 
         $subject->setEncoding('ASCII');
-        self::assertSame('ASCII', $subject->getEncoding());
+        $this->assertSame('ASCII', $subject->getEncoding());
     }
 }
